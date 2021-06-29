@@ -15,3 +15,9 @@ build:
 run:
   server: npm start
   web: npm start
+
+release:
+  image: web
+  command: 
+    -npm run migrate up
+    
