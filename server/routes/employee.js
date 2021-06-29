@@ -14,7 +14,7 @@ router.route("/").get(cors(), (req, res) => {
 });
 
 router.route("/:Firstname").get(cors(), (req, res) => {
-  Employee.find({ Firstname: { "$regex": req.params.Firstname, "$options": "i" }, "$orderby": { Firstname: -1 } }, (err, result) => {
+  Employee.find({ Firstname: { "$regex": req.params.Firstname, "$options": "i" } }, (err, result) => {
     if (err) return res.json(err);
     result.sort();
     return res.send(result);
