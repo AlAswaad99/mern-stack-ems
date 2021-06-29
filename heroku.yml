@@ -1,0 +1,17 @@
+build:
+  docker:
+    server: ./server/Dockerfile
+    client: ./client/Dockerfile
+
+release:
+  command: 
+    - cd server && npm start
+  image: server
+
+  command:
+    - cd client && npm start
+  image: client
+
+run:
+  server: npm start
+  client: npm start
