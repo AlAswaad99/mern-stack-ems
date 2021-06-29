@@ -2,14 +2,12 @@
 
 MERN Stack Employee Management System is a web based application tha helps employers manage thier employees easily.
 
-
 ## How to Run
 
 - Either clone or download the project from this repository to your device
 - Inside your terminal, Navigate to root folder /server directory and type **npm install** followed by **npm start**
 - Navigate to /client diretory and run command **npm install** followed by **npm start**
-- Open preffered browser and go to URL http://localhost:3000
-
+- Open preffered browser and go to URL **<http://localhost:3000>**
 
 ## How to use the app
 
@@ -53,39 +51,55 @@ MERN Stack Employee Management System is a web based application tha helps emplo
 
 ## Dependencies
 
-  -"@testing-library/jest-dom": "^5.11.4",
-  -"@testing-library/react": "^11.1.0",
-  -"@testing-library/user-event": "^12.1.10",
-  -"@tippyjs/react": "^4.2.5",
-  -"@types/jest": "^26.0.23",
-  -"@types/node": "^15.12.4",
-  -"@types/react": "^17.0.11",
-  -"@types/react-dom": "^17.0.8",
-  -"axios": "^0.21.1",
-  -"moment": "^2.29.1",
-  -"react": "^17.0.2",
-  -"react-bootstrap": "^1.6.1",
-  -"react-datepicker": "^4.1.1",
-  -"react-dom": "^17.0.2",
-  -"react-hook-form": "^7.9.0",
-  -"react-icons": "^4.2.0",
-  -"react-redux": "^7.2.4",
-  -"react-scripts": "4.0.3",
-  -"react-table": "^7.7.0",
-  -"react-toast-component": "^1.4.18",
-  -"react-toastify": "^7.0.4",
-  -"react-tooltip": "^4.2.21",
-  -"redux": "^4.1.0",
-  -"redux-saga": "^1.1.3",
-  -"styled-components": "^5.3.0",
-  -"typescript": "^4.3.4",
-  -"web-vitals": "^1.0.1",
-  -"cors": "^2.8.5",
-  -"express": "^4.17.1",
-  -"mongoose": "^5.12.13",
-  -"nodemon": "^2.0.7",
+- "@testing-library/jest-dom": "^5.11.4",
+- "@testing-library/react": "^11.1.0",
+- "@testing-library/user-event": "^12.1.10",
+- "@tippyjs/react": "^4.2.5",
+- "@types/jest": "^26.0.23",
+- "@types/node": "^15.12.4",
+- "@types/react": "^17.0.11",
+- "@types/react-dom": "^17.0.8",
+- "axios": "^0.21.1",
+- "moment": "^2.29.1",
+- "react": "^17.0.2",
+- "react-bootstrap": "^1.6.1",
+- "react-datepicker": "^4.1.1",
+- "react-dom": "^17.0.2",
+- "react-hook-form": "^7.9.0",
+- "react-icons": "^4.2.0",
+- "react-redux": "^7.2.4",
+- "react-scripts": "4.0.3",
+- "react-table": "^7.7.0",
+- "react-toast-component": "^1.4.18",
+- "react-toastify": "^7.0.4",
+- "react-tooltip": "^4.2.21",
+- "redux": "^4.1.0",
+- "redux-saga": "^1.1.3",
+- "styled-components": "^5.3.0",
+- "typescript": "^4.3.4",
+- "web-vitals": "^1.0.1",
+- "cors": "^2.8.5",
+- "express": "^4.17.1",
+- "mongoose": "^5.12.13",
+- "nodemon": "^2.0.7",
 
 - MongoDB
 - NodeJS 14
 
 ## Screenshots
+
+### Landing Page
+
+<img src="https://github.com/AlAswaad99/mern-stack-ems/blob/master/screenshots/Screenshot%20(491).png" alt="landing page" width="400"/>
+
+### Search
+
+<img src="https://github.com/AlAswaad99/mern-stack-ems/blob/master/screenshots/Screenshot%20(492).png" alt="Search Employee" width="400"/>
+
+### Edit
+
+<img src="https://github.com/AlAswaad99/mern-stack-ems/blob/master/screenshots/Screenshot%20(493).png" alt="Edit Employee with Validation" width="400"/>
+
+### Remove
+
+<img src="https://github.com/AlAswaad99/mern-stack-ems/blob/master/screenshots/Screenshot%20(494).png" alt="Remove Employee with Undo choice" width="400"/>
