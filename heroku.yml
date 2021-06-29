@@ -5,11 +5,11 @@ build:
 
 release:
   command: 
-    - cd server && npm start
+    - npm start
   image: server
 
   command:
-    - cd client && npm start
+    - npm start
   image: client
 
 run:
