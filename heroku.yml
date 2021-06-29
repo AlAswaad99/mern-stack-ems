@@ -3,14 +3,14 @@ build:
     server: ./server/Dockerfile
     client: ./client/Dockerfile
 
-release:
-  command: 
-    - npm start
-  image: server
+# release:
+#   command: 
+#     - npm start
+#   image: server
 
-  command:
-    - npm start
-  image: client
+#   command:
+#     - npm start
+#   image: client
 
 run:
   server: npm start
