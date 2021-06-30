@@ -13,10 +13,10 @@ build:
 #   image: client
 
 run:
-  server: npm start
-  web: npm start
+  server: NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client
+  # web: npm start
 
-release:
-  command: 
-    - npm run migrate up
-  image: web
+# release:
+#   command: 
+#     - npm run migrate up
+#   image: web
