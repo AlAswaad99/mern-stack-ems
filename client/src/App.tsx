@@ -1,15 +1,13 @@
-import { Back } from './styles/Background';
-import Employee from './components/EmployeeComponent';
+import { Back } from "./styles/Background";
+import Employee from "./components/EmployeeComponent";
 
 function App() {
   return (
     <Back>
-
       <div className="App">
         <Employee />
       </div>
     </Back>
-
   );
 }
 

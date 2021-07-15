@@ -1,21 +1,28 @@
-import React, { useState, useContext, useEffect } from "react";
+import react, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { addEmployee, editEmployee } from "../redux/actions/employee_action";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addEmployee,
+  clearSelectedEmployee,
+  editEmployee,
+} from "../redux/actions/employee_action";
+import { EmployeeModel } from "../model/Employee_Model";
 import { Error, validateGender } from "./ErrorComponent";
-import { EmployeeContext } from "./EmployeeComponent";
 import { toast, Zoom } from "react-toastify";
 import { FaCheckCircle } from "react-icons/fa";
 import moment from "moment";
-import "react-datepicker/dist/react-datepicker.css";
 import "tippy.js/dist/tippy.css";
+import { SingleEmployeeState } from "../redux/reducers/model/employee_state_model";
+import { RootState } from "../redux/reducers/reducer_index";
 
 toast.configure();
 const AddEmployeeForm = () => {
-  const { currentToBeUpdatedEmployeeState } = useContext(EmployeeContext);
-  const { handleToBeUpdatedEmployeeState } = useContext(EmployeeContext);
+  const selectedEmployee = useSelector<
+    RootState,
+    SingleEmployeeState["selectedEmployee"]
+  >((state) => state.single_employee_state.selectedEmployee);
 
-  const initialEmployeeInfoState = {
+  const initialEmployeeInfoState: EmployeeModel = {
     _id: "",
     Firstname: "",
     Middlename: "",
@@ -31,33 +38,32 @@ const AddEmployeeForm = () => {
     reset,
     formState: { errors },
     clearErrors,
-  } = useForm({ mode: "onSubmit", reValidateMode: "onSubmit" });
+
+  } = useForm({ mode: "onSubmit", reValidateMode: "onSubmit", defaultValues: initialEmployeeInfoState }, );
 
   useEffect(() => {
-    if (currentToBeUpdatedEmployeeState === null) {
-      reset(initialEmployeeInfoState);
-    } else {
-      reset(currentToBeUpdatedEmployeeState);
-    }
-  }, [currentToBeUpdatedEmployeeState]);
+    if (selectedEmployee !== null) {
+      console.log("this is he useeffect selected employee");
+      console.log(selectedEmployee);
+      console.log(selectedEmployee.DOB);
+      reset(selectedEmployee);
+    } 
+  }, [selectedEmployee]);
 
   const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
-    if (data._id === "") {
+  const onSubmit = (data: EmployeeModel) => {
+    if (data._id === "" || data._id === undefined) {      
       dispatch(addEmployee(data));
       showSubmitToast("Employee Added Successfully");
     } else {
-      console.log("abt to dispacth edit");
       dispatch(editEmployee(data));
       showSubmitToast("Employee Updated Successfully");
     }
-    reset(initialEmployeeInfoState);
-    handleToBeUpdatedEmployeeState(null);
-    clearErrors();
+    clearInput();
   };
 
-  const showSubmitToast = (msg) => {
+  const showSubmitToast = (msg: string) => {
     toast.success(
       <div className="Toast-Body">
         <div className="Toast-Message">
@@ -79,7 +85,7 @@ const AddEmployeeForm = () => {
   const clearInput = () => {
     clearErrors();
     reset(initialEmployeeInfoState);
-    handleToBeUpdatedEmployeeState(null);
+    // dispatch(clearSelectedEmployee());
   };
 
   return (
@@ -112,7 +118,6 @@ const AddEmployeeForm = () => {
               <input
                 type="text"
                 id="Middlename"
-                name="Middlename"
                 inputMode="text"
                 placeholder="Middle Name"
                 {...register("Middlename", {
@@ -131,7 +136,6 @@ const AddEmployeeForm = () => {
               <input
                 type="text"
                 id="Lastname"
-                name="Lastname"
                 inputMode="text"
                 placeholder="Last Name"
                 {...register("Lastname", {
@@ -156,11 +160,10 @@ const AddEmployeeForm = () => {
             <div className="gender-div">
               <div className="gender-select-div">
                 <select
-                  name="Gender"
                   id="Gender-Select"
                   {...register("Gender", {
                     required: "Select Gender",
-                    validate: (value) =>
+                    validate: (value: string) =>
                       validateGender(value) || "Select Gender",
                   })}
                 >
@@ -188,7 +191,6 @@ const AddEmployeeForm = () => {
               <input
                 type="date"
                 id="DOB"
-                name="DOB"
                 placeholder="Select Date"
                 min="2000-01-01"
                 max={moment().format("YYYY-MM-DD")}
@@ -208,15 +210,16 @@ const AddEmployeeForm = () => {
               <input
                 type="number"
                 id="Salary"
-                name="Salary"
                 inputMode="numeric"
                 placeholder="Salary"
                 {...register("Salary", {
                   required: "Salary Required",
                   pattern: {
-                    value: /^[0-9]{2,10}$/i,
-                    message: "Salary must be 2 - 10 digits-only long",
+                    value: /^[0-9]{0,10}$/i,
+                    message: "Salary must be non-negative and less than 10 digits",
+                    
                   },
+                  
                 })}
               />
               <Error errors={errors.Salary} />
@@ -227,6 +230,7 @@ const AddEmployeeForm = () => {
         <button className="submitButton" type="submit" name="submit">
           S u b m i t
         </button>
+
         <button className="clearButton" onClick={clearInput} type="reset">
           C l e a r
         </button>

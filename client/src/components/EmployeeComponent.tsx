@@ -9,17 +9,27 @@ import AddEmployeeForm from "./AddEmployeeComponent";
 import { Styles } from "../styles/Styles";
 import { Header } from "../styles/Header";
 import { ToastContainer } from "react-toastify";
-
-export const EmployeeContext = React.createContext({});
-export const DeletedEmployeeContext = React.createContext({});
+import { EmployeeModel } from "../model/Employee_Model";
+import {
+  EmployeeState,
+  SingleEmployeeState,
+} from "../redux/reducers/model/employee_state_model";
+import { RootState } from "../redux/reducers/reducer_index";
 
 const Employee = () => {
   const dispatch = useDispatch();
+
   const [searchText, setSearchText] = useState("");
 
-  const employees = useSelector((state) => state.employees.employees);
-  const loading = useSelector((state) => state.employees.loading);
-  const errors = useSelector((state) => state.employees.errors);
+  const employees = useSelector<RootState, EmployeeState["employees"]>(
+    (state) => state.employee_state.employees
+  );
+  const loading = useSelector<RootState, EmployeeState["loading"]>(
+    (state) => state.employee_state.loading
+  );
+  const errors = useSelector<RootState, EmployeeState["error"]>(
+    (state) => state.employee_state.error
+  );
 
   useEffect(() => {
     if (searchText === "") {
@@ -27,31 +37,17 @@ const Employee = () => {
     } else {
       dispatch(searchEmployeeByName(searchText));
     }
-
-    
   }, [searchText]);
 
-  const [currentToBeUpdatedEmployeeState, setcurrentToBeUpdatedEmployeeState] =
-    useState(null);
-
-  const handleToBeUpdatedEmployeeState = (selectedEmp) => {
-    setcurrentToBeUpdatedEmployeeState(selectedEmp);
-  };
-
-  const contextValue = {
-    handleToBeUpdatedEmployeeState,
-    currentToBeUpdatedEmployeeState,
-  };
-
-  const handleInputChanged = (e) => {
+  const handleInputChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchTitle = e.target.value;
     setSearchText(searchTitle);
   };
 
   return (
-    <EmployeeContext.Provider value={contextValue}>
+    <>
       <Header>
-        <h2>MERN - Employee Management System</h2>
+        <h1>MERN - Employee Management System</h1>
         <div className="searchArea">
           <label htmlFor="title">Search</label>
           <input
@@ -62,24 +58,26 @@ const Employee = () => {
           ></input>
         </div>
       </Header>
-
       <Styles>
         <ToastContainer bodyClassName="Undo-Toast-Body" />
 
         <div className="employeesResult">
-          {employees.length === 0 && <p>No Employees Available</p>}
-          {employees.loading && (
+          {loading && (
             <div>
               <p>Loading...</p>
             </div>
           )}
           {employees.length > 0 &&
-            employees.map((emp) => <Card employee={emp} key={emp._id} />)}
+            employees.map((emp: EmployeeModel) => (
+              <Card {...emp} key={emp._id} />
+            ))}
+
+          {employees.length === 0 && !loading && <p>No Employees Available</p>}
           {errors && !loading && <p>{errors}</p>}
         </div>
-        <AddEmployeeForm EmployeeProps={currentToBeUpdatedEmployeeState} />
+        <AddEmployeeForm />
       </Styles>
-    </EmployeeContext.Provider>
+    </>
   );
 };
 

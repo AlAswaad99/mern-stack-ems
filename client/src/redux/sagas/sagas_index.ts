@@ -1,5 +1,7 @@
 import { all } from "redux-saga/effects";
-import { addEmployeeSaga, deleteEmployeeSaga, editEmployeeSaga, getEmployeeSaga, searchEmployeeByNameSaga } from "./employeeSaga";
+import { addEmployeeSaga, deleteEmployeeSaga, editEmployeeSaga, getEmployeeSaga, searchEmployeeByNameSaga, selectEmployeeSaga } from "./employeeSaga";
+
+
 
 export default function* rootSaga(){
     yield all([
@@ -8,6 +10,7 @@ export default function* rootSaga(){
         addEmployeeSaga(),
         editEmployeeSaga(),
         searchEmployeeByNameSaga(),
+        selectEmployeeSaga(),
     ]);
 }
 

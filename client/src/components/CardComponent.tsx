@@ -1,31 +1,32 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { removeEmployee } from "../redux/actions/employee_action";
-import { EmployeeContext } from "./EmployeeComponent";
+import {
+  removeEmployee,
+  selectEmployeeForEdit,
+} from "../redux/actions/employee_action";
+import { EmployeeModel } from "../model/Employee_Model";
 import moment from "moment";
 import { toast, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { addEmployee } from "../redux/actions/employee_action";
-import { FaCheckCircle, FaUser, FaTrash, FaPen } from "react-icons/fa";
+import { FaCheckCircle, FaUser, FaPen, FaTrash } from "react-icons/fa";
+
 
 toast.configure();
-const Card = (CardProps) => {
+const Card = (CardProps: EmployeeModel) => {
   const dispatch = useDispatch();
 
-  const { handleToBeUpdatedEmployeeState } = useContext(EmployeeContext);
 
-  const toBeUpdatedEmpSelected = (emp) => {
-    emp.DOB = moment(emp.DOB).format("YYYY-MM-DD");
-    handleToBeUpdatedEmployeeState(emp);
-  };
-
-  const deleteEmployee = (emp) => {
-    console.log(emp.Firstname);
+  const deleteEmployee = (emp: EmployeeModel) => {
     dispatch(removeEmployee(emp));
     showUndoToast(emp);
   };
 
-  const showUndoToast = (emp, closeToast) => {
+  const selectEmployee = (emp: EmployeeModel) => {
+    dispatch(selectEmployeeForEdit(emp));
+  };
+
+  const showUndoToast = (emp: EmployeeModel) => {
     toast.info(
       <div className="Toast-Body">
         <div className="Toast-Message">
@@ -41,12 +42,11 @@ const Card = (CardProps) => {
             Undo
           </u>
           <p> </p>
-          <u onClick={closeToast}>Close</u>
+          <u>Close</u>
         </div>
       </div>,
       {
         position: toast.POSITION.TOP_CENTER,
-        autoClose: false,
         autoClose: 4000,
         hideProgressBar: true,
         pauseOnHover: false,
@@ -62,36 +62,31 @@ const Card = (CardProps) => {
         <FaUser />
       </div>
       <div className="Employee-Personal-Info">
-        <h5
-          className="Employee-Name"
-          onClick={() => {
-            toBeUpdatedEmpSelected(CardProps.employee);
-          }}
-        >
-          Name: {CardProps.employee.Firstname} {CardProps.employee.Middlename}{" "}
-          {CardProps.employee.Lastname}
+        <h5 className="Employee-Name">
+          Name: {CardProps.Firstname} {CardProps.Middlename}{" "}
+          {CardProps.Lastname}
         </h5>
         <p className="Employee-Gender">
           {" "}
-          <strong>Genger:</strong> {CardProps.employee.Gender}
+          <strong>Genger:</strong> {CardProps.Gender}
         </p>
         <p className="Employee-DOB">
           {" "}
           <strong>Date of Birth:</strong>{" "}
-          {moment(CardProps.employee.DOB).format("DD-MM-YYYY")}
+          {moment(CardProps.DOB).format("DD-MM-YYYY")}
         </p>
       </div>
       <div className="Employee-Salary">
         <p className="Employee-Salary">
           {" "}
-          <strong>Salary:</strong> {CardProps.employee.Salary} Birr
+          <strong>Salary:</strong> {CardProps.Salary} Birr
         </p>
       </div>
       <div className="Card-Buttons">
         <button
           className="editButton"
           onClick={() => {
-            toBeUpdatedEmpSelected(CardProps.employee);
+            selectEmployee(CardProps);
           }}
         >
           <FaPen />{" "}
@@ -100,13 +95,13 @@ const Card = (CardProps) => {
         <button
           className="deleteButton"
           onClick={() => {
-            deleteEmployee(CardProps.employee);
+            deleteEmployee(CardProps);
           }}
         >
           <FaTrash />
         </button>
       </div>
-    </div>
+      </div>
   );
 };
 

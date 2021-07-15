@@ -6,14 +6,14 @@ const cors = require("cors");
 const router = express.Router();
 
 
-router.route("/").get(cors(), (req, res) => {
+router.route("/").get((req, res) => {
   Employee.find((err, result) => {
     if (err) return res.json(err);
     return res.send(result);
   });
 });
 
-router.route("/:Firstname").get(cors(), (req, res) => {
+router.route("/:Firstname").get((req, res) => {
   Employee.find({ Firstname: { "$regex": req.params.Firstname, "$options": "i" } }, (err, result) => {
     if (err) return res.json(err);
     result.sort();
@@ -23,7 +23,7 @@ router.route("/:Firstname").get(cors(), (req, res) => {
 
 
 router.options('/register', cors())
-router.route("/register").post(cors(), async (req, res) => {
+router.route("/register").post(async (req, res) => {
   const employee = new Employee({
     Firstname: req.body.Firstname,
     Middlename: req.body.Middlename,
@@ -54,7 +54,7 @@ router.route("/register").post(cors(), async (req, res) => {
 
 
 router.options('/update/:_id', cors())
-router.route("/update/:_id").put(cors(), (req, res) => {
+router.route("/update/:_id").put((req, res) => {
   Employee.findOneAndUpdate(
     { _id: req.params._id },
     {
@@ -88,7 +88,7 @@ router.route("/update/:_id").put(cors(), (req, res) => {
 
 });
 router.options('/delete/:_id', cors())
-router.route("/delete/:_id").delete(cors(), (req, res) => {
+router.route("/delete/:_id").delete((req, res) => {
   console.log(req.params._id);
   Employee.findOneAndDelete({ _id: req.params._id }, (err, result) => {
 
