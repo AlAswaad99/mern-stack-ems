@@ -1,6 +1,7 @@
 const express = require("express");
 const Employee = require("../model/employee_model");
 const cors = require("cors");
+const {validChecker, ValidationRules} = require("../middleware/validity_checker");
 
 
 const router = express.Router();
@@ -23,7 +24,7 @@ router.route("/:Firstname").get((req, res) => {
 
 
 router.options('/register', cors())
-router.route("/register").post(async (req, res) => {
+router.route("/register").post( ValidationRules, validChecker, async (req, res) => {
   const employee = new Employee({
     Firstname: req.body.Firstname,
     Middlename: req.body.Middlename,
@@ -54,7 +55,7 @@ router.route("/register").post(async (req, res) => {
 
 
 router.options('/update/:_id', cors())
-router.route("/update/:_id").put((req, res) => {
+router.route("/update/:_id").put(ValidationRules, validChecker, (req, res) => {
   Employee.findOneAndUpdate(
     { _id: req.params._id },
     {
@@ -63,9 +64,7 @@ router.route("/update/:_id").put((req, res) => {
         Middlename: req.body.Middlename,
         Lastname: req.body.Lastname,
         Gender: req.body.Gender,
-        DOB: req.body.DOB,
-        MOB: req.body.MOB,
-        YOB: req.body.YOB,
+        DOB: req.body.DOB,        
         Salary: req.body.Salary,
       }
     },
@@ -77,9 +76,7 @@ router.route("/update/:_id").put((req, res) => {
         Middlename: req.body.Middlename,
         Lastname: req.body.Lastname,
         Gender: req.body.Gender,
-        DOB: req.body.DOB,
-        MOB: req.body.MOB,
-        YOB: req.body.YOB,
+        DOB: req.body.DOB,        
         Salary: req.body.Salary,
       };
       return res.json(msg);

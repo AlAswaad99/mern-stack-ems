@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const EmployeeRoute = require("./routes/employee");
 const path = require("path");
 const cors = require("cors");
+const expressValidator = require('express-validator');
 
 
 const port = process.env.PORT || 5000;
@@ -28,6 +29,7 @@ mongoose.connect(process.env.MONGODB_URI ||
   });
 app.use(express.json());
 app.use(cors());
+// app.use(expressValidator());
 app.use("/employee", EmployeeRoute);
 
 if(process.env.NODE_ENV === 'production'){
