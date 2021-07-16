@@ -23,7 +23,7 @@ export const Header = styled.div`
  .searchArea{
    background-color: white;
    float: right;
-   margin-right: 50px;
+   margin-right: 3%;
    margin-top: 15px;
    padding: 2px 10px;
  }

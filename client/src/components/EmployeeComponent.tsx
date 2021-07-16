@@ -9,6 +9,7 @@ import AddEmployeeForm from "./AddEmployeeComponent";
 import { Styles } from "../styles/Styles";
 import { Header } from "../styles/Header";
 import { ToastContainer } from "react-toastify";
+import { useMediaQuery } from 'react-responsive';
 import { EmployeeModel } from "../model/Employee_Model";
 import {
   EmployeeState,
@@ -17,6 +18,10 @@ import {
 import { RootState } from "../redux/reducers/reducer_index";
 
 const Employee = () => {
+  const isBelow750px = useMediaQuery({
+    query: '(max-width: 750px)'
+  })
+
   const dispatch = useDispatch();
 
   const [searchText, setSearchText] = useState("");
@@ -47,7 +52,7 @@ const Employee = () => {
   return (
     <>
       <Header>
-        <h1>MERN - Employee Management System</h1>
+        <h1>{isBelow750px && "MERN - EMS"} {!isBelow750px && "MERN - Employee Management System"}</h1>
         <div className="searchArea">
           <label htmlFor="title">Search</label>
           <input
@@ -61,7 +66,7 @@ const Employee = () => {
       <Styles>
         <ToastContainer bodyClassName="Undo-Toast-Body" />
 
-        <div className="employeesResult">
+        <section>        <div className="employeesResult">
           {loading && (
             <div>
               <p>Loading...</p>
@@ -76,6 +81,8 @@ const Employee = () => {
           {errors && !loading && <p>{errors}</p>}
         </div>
         <AddEmployeeForm />
+        </section>
+
       </Styles>
     </>
   );

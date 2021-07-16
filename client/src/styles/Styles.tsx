@@ -209,10 +209,11 @@ export const Styles = styled.div`
   /* outline: 1px solid slategrey; */
 }
 
- .searchArea{
-  margin-bottom: 50px;
+ /* .searchArea{
+  margin:0px;
+  padding:  0px;
 
- }
+ } */
 
  
 .Card{
@@ -339,10 +340,152 @@ export const Styles = styled.div`
 
 }
 
-
-/* .card-body{
-  align-content: space-between;
-} */
+@media screen and (max-width: 650px) {
 
 
+.Employee-Personal-Info h5{
+font-size: 10px !important;
+font-weight: bold;
+
+}
+.Employee-Personal-Info p{
+font-size: 10px !important;
+
+}
+.Employee-Salary{
+/* font-size: 50px; */
+/* vertical-align: middle; */
+/* flex: 3;
+display: inline;
+margin: auto 5px auto 0px;
+text-align: start; */
+font-size: 10px !important;
+/* padding-bottom: 8px; */
+
+}
+
+
+}
+
+@media screen and (max-width: 950px) {
+
+  section{
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+  .employeesResult{
+  width: 95%;
+  /* height: 520px; */
+  /* clear: right !important; */
+  /* margin-right: 0px;
+  margin-top: 10px; */
+  /* margin-top: 10px; */
+  /* margin-left: 5%; */
+  margin: 10px auto 0px auto;
+  /* padding: 25px - 0px 0px; */
+  /* overflow-y: scroll; */
+  background-color: white;
+  padding: 10px 10px 10px 10px;
+  /* -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    /* scrollbar-width: 2px;
+    scrollbar  */ 
+  
+ }
+
+ form {
+   background: white;
+   border: 1px solid #dedede;
+   display: flex;
+   /* clear: both !important; */
+
+   flex-direction: column;
+   justify-content: space-around;
+   margin: 0 auto;
+   max-width: 90%;
+   padding: 20px 20px;
+ }
+
+ .Card{
+  margin: 2px 10px 2px 5px;
+  /* border: 1px solid #a3a3a3; */
+  width: 95%;
+  background-color: whitesmoke;
+  /* border-radius: 5px; */
+  padding: 5px 5px;
+  float: left;
+  display: flex;
+  /* text-align: center; */
+
+}
+
+.Employee-Icon{
+  font-size: 30px;
+  display: inline;
+  margin: auto auto auto 5px;
+  text-align: center;
+  background-color: #151525;
+  padding-top: 5px;
+  /* border-radius: 100px; */
+  
+  /* vertical-align: middle; */
+  flex: 1.5;
+}
+
+.Employee-Icon svg{
+  /* text-align: center;
+   */
+  color: white;
+}
+.Employee-Personal-Info{
+  /* font-size: 50px; */
+  /* vertical-align: middle; */
+  flex: 7;
+  display: inline;
+  margin: auto 5px auto 5px;
+  /* text-align: center; */
+}
+
+.Employee-Personal-Info h5, p{
+  margin: 7px;
+
+}
+
+.Employee-Personal-Info h5{
+  font-size: 12px;
+  font-weight: bold;
+
+}
+.Employee-Personal-Info p{
+  font-size: 12px;
+
+}
+.Employee-Personal-Info h5{
+  text-transform: capitalize;
+
+}
+.Employee-Salary{
+  /* font-size: 50px; */
+  /* vertical-align: middle; */
+  flex: 3;
+  display: inline;
+  margin: auto 5px auto 0px;
+  text-align: start;
+  font-size: 12px;
+  /* padding-bottom: 8px; */
+
+}
+.Card-Buttons{
+  /* font-size: 50px; */
+  /* vertical-align: middle; */
+  flex: 4;
+  display: inline;
+  margin: auto 5px auto 0px;
+  text-align: justify;
+  
+
+}
+
+
+}
 `;
