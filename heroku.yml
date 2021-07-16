@@ -16,12 +16,12 @@ run:
   server: npm start
   web: npm start
 
-# release:
-#   image: server
-#   command: 
-#     - docker compose up
+release:
+  image: server
+  command: 
+    - npm start up
 
 release:
   image: web
   command: 
-    - docker compose up
+    - npm start up
