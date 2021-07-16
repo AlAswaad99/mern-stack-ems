@@ -19,6 +19,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "build_and_start": "react-scripts build && react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

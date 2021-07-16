@@ -39,6 +39,8 @@ const Employee = () => {
     (state) => state.employee_state.error
   );
 
+  console.log("this is the employees from emp comp");
+  console.log(employees);
   useEffect(() => {
     if (searchText === "") {
       dispatch(fetchEmployees());
@@ -70,12 +72,13 @@ const Employee = () => {
         <ToastContainer bodyClassName="Undo-Toast-Body" />
 
         <section>        <div className="employeesResult">
+        {employees === undefined && <p>No Connection!! Please Try Again!!</p>}
           {loading && (
             <div>
               <p>Loading...</p>
             </div>
           )}
-          {employees.length > 0 &&
+          {employees !== undefined && employees.length > 0 &&
             employees.map((emp: EmployeeModel) => (
               <Card {...emp} key={emp._id} />
             ))}
