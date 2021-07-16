@@ -14,7 +14,7 @@ build:
 
 run:
   server: NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client
-  # web: npm start
+  web: npm start
 
 # release:
 #   command: 
