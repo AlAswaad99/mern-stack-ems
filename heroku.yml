@@ -19,9 +19,9 @@ run:
 release:
   image: server
   command: 
-    - npm run migrate up
+    - docker compose up
 
 release:
   image: web
   command: 
-    - npm run migrate up
+    - docker compose up
