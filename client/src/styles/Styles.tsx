@@ -250,13 +250,13 @@ export const Styles = styled.div`
 .Employee-Personal-Info{
   /* font-size: 50px; */
   /* vertical-align: middle; */
-  flex: 4.25;
+  flex: 5;
   display: inline;
   margin: auto 5px auto 10px;
   /* text-align: center; */
 }
 
-.Employee-Personal-Info h5, p{
+.Employee-Personal-Info h5,h6, p{
   margin: 7px;
 }
 .Employee-Personal-Info p{
@@ -343,13 +343,14 @@ export const Styles = styled.div`
 @media screen and (max-width: 650px) {
 
 
-.Employee-Personal-Info h5{
-font-size: 10px !important;
-font-weight: bold;
-
-}
 .Employee-Personal-Info p{
 font-size: 10px !important;
+
+text-transform: capitalize;
+
+}
+.Employee-Personal-Info strong{
+font-size: 11px !important;
 
 }
 .Employee-Salary{
@@ -446,14 +447,13 @@ font-size: 10px !important;
   /* text-align: center; */
 }
 
-.Employee-Personal-Info h5, p{
+.Employee-Personal-Info h5, h6, p{
   margin: 7px;
 
 }
 
-.Employee-Personal-Info h5{
-  font-size: 12px;
-  font-weight: bold;
+.Employee-Personal-Info h6{
+  font-weight: 900; 
 
 }
 .Employee-Personal-Info p{

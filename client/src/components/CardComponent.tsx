@@ -10,12 +10,15 @@ import { toast, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { addEmployee } from "../redux/actions/employee_action";
 import { FaCheckCircle, FaUser, FaPen, FaTrash } from "react-icons/fa";
-
+import { useMediaQuery } from "react-responsive";
 
 toast.configure();
 const Card = (CardProps: EmployeeModel) => {
-  const dispatch = useDispatch();
+  const isBelow650px = useMediaQuery({
+    query: "(max-width: 650px)",
+  });
 
+  const dispatch = useDispatch();
 
   const deleteEmployee = (emp: EmployeeModel) => {
     dispatch(removeEmployee(emp));
@@ -62,10 +65,18 @@ const Card = (CardProps: EmployeeModel) => {
         <FaUser />
       </div>
       <div className="Employee-Personal-Info">
-        <h5 className="Employee-Name">
-          Name: {CardProps.Firstname} {CardProps.Middlename}{" "}
-          {CardProps.Lastname}
-        </h5>
+        {isBelow650px && (
+          <p className="Employee-Name">
+            <strong>Name: </strong> {CardProps.Firstname} {CardProps.Middlename}{" "}
+            {CardProps.Lastname}
+          </p>
+        )}
+        {!isBelow650px && (
+          <h5 className="Employee-Name">
+            Name: {CardProps.Firstname} {CardProps.Middlename}{" "}
+            {CardProps.Lastname}
+          </h5>
+        )}
         <p className="Employee-Gender">
           {" "}
           <strong>Genger:</strong> {CardProps.Gender}
@@ -101,7 +112,7 @@ const Card = (CardProps: EmployeeModel) => {
           <FaTrash />
         </button>
       </div>
-      </div>
+    </div>
   );
 };
 

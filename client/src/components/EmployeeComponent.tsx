@@ -21,6 +21,9 @@ const Employee = () => {
   const isBelow750px = useMediaQuery({
     query: '(max-width: 750px)'
   })
+  const isBelow450px = useMediaQuery({
+    query: '(max-width: 450px)'
+  })
 
   const dispatch = useDispatch();
 
@@ -52,7 +55,7 @@ const Employee = () => {
   return (
     <>
       <Header>
-        <h1>{isBelow750px && "MERN - EMS"} {!isBelow750px && "MERN - Employee Management System"}</h1>
+        <h1>{isBelow750px && !isBelow450px && "MERN - EMS"} {isBelow450px && ""} {!isBelow750px && !isBelow450px && "MERN - Employee Management System"}</h1>
         <div className="searchArea">
           <label htmlFor="title">Search</label>
           <input

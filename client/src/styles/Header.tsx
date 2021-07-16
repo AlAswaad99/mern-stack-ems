@@ -7,7 +7,7 @@ export const Header = styled.div`
  padding: 5px;
  align-content: flex-start;
 
- h1 {
+ h1, #small-title {
    /* border-bottom: 1px solid white; */
    color: white;
    font-family: sans-serif;
