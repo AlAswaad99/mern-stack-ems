@@ -12,9 +12,9 @@ build:
 #     - npm start
 #   image: client
 
-# run:
-#   server: npm start
-#   web: npm start
+run:
+  server: npm start
+  web: npm start
 
 release:
   image: server
