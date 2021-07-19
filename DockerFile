@@ -10,7 +10,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 RUN cd server && npm install --silent
-RUN cd client && npm install --silent
+RUN cd client && npm install --silent && npm run build
 
 # Copy app source code
 COPY . .
