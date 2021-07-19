@@ -37,6 +37,9 @@ app.use(cors());
 // app.use(expressValidator());
 app.use("/employee", EmployeeRoute);
 
+console.log(process.env.NODE_ENV);
+console.log(__dirname);
+
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static("../client/build"));
 
