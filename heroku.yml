@@ -1,6 +1,6 @@
 build:
   docker:
-    web: ./Dockerfile
+    web: DockerFile
     # server: ./client/Dockerfile
 
 # release:
