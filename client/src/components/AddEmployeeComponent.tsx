@@ -32,7 +32,7 @@ const AddEmployeeForm = () => {
     Salary: "",
   };
 
-  var {
+  const {
     register,
     handleSubmit,
     reset,

@@ -11,7 +11,8 @@ const port = process.env.PORT;
 const app = express();
 
 try{
-  mongoose.connect(process.env.MONGODB_URI,
+  mongoose.connect(
+    process.env.MONGODB_URI,
     // "mongodb://localhost:27017/AS_ChallengeTrial", 
       {
         useNewUrlParser: true,
@@ -43,5 +44,15 @@ if(process.env.NODE_ENV === 'production'){
   //   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   // })
 }
+
+// console.log(process.env.NODE_ENV);
+
+// if(process.env.NODE_ENV === 'dev'){
+//   app.use(express.static("../client/build"));
+
+//   // app.get("*", (req, res) =>{
+//   //   res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
+//   // })
+// }
 app.listen(port, ()=> console.log(`listening on port ${port}`));
 

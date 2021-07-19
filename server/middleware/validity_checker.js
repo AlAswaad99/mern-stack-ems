@@ -3,17 +3,17 @@ const { check, checkSchema } = require('express-validator');
 const { MALE, FEMALE } = require("../model/gender_model");
 
 const validChecker = (req, res, next) => {
-    const errors = validationResult(req).formatWith(errorFormatter);
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    next();
+    // next();
 }
 
 var GenderChecker = {
   "Gender": {
     in: 'body',
-    matches: {
+    isIn: {
       options: [[MALE,FEMALE]],
       errorMessage: "Invalid Gender"
     }
