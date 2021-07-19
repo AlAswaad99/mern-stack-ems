@@ -1,7 +1,7 @@
 build:
   docker:
-    server: ./server/Dockerfile
-    web: ./client/Dockerfile
+    web: ./server/Dockerfile
+    server: ./client/Dockerfile
 
 # release:
 #   command: 
@@ -13,7 +13,7 @@ build:
 #   image: client
 
 run:
-  web: npm start --prefix server
+  web: npm start
   # server: npm start
 
 # release:
