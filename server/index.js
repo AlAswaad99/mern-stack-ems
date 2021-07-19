@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const EmployeeRoute = require("./routes/employee");
 const path = require("path");
+const fs = require("fs");
 const cors = require("cors");
 const dotenv = require('dotenv');
 
@@ -39,6 +40,27 @@ app.use("/employee", EmployeeRoute);
 
 console.log(process.env.NODE_ENV);
 console.log(__dirname);
+
+console.log(`${__dirname}/client/build`);
+fs.access(`${__dirname}/client/build`, (error) => {
+  if(error){
+    console.log("nope");
+  }
+  else{
+    console.log("yup");
+  }
+});
+
+console.log(`${__dirname}/client/build/`);
+fs.access(`${__dirname}/client/build`, (error) => {
+  if(error){
+    console.log("nope");
+  }
+  else{
+    console.log("yup");
+  }
+});
+
 
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static("../client/build"));
