@@ -9,11 +9,11 @@ WORKDIR /usr/src/app
 # Install Dependencies
 COPY package*.json ./
 
-RUN npm install --silent
-RUN npm run build_client
-
 # Copy app source code
 COPY . .
+
+RUN npm install --silent
+RUN npm run build_client
 
 # Exports
 EXPOSE 5000
