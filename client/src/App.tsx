@@ -1,4 +1,5 @@
 import { Back } from "./styles/Background";
+import React from "react";
 import Employee from "./components/EmployeeComponent";
 
 function App() {
