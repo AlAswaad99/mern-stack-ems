@@ -14,7 +14,7 @@ build:
 
 run:
   server: npm start
-  web: npm start
+  # web: npm start
 
 # release:
 #   image: server
