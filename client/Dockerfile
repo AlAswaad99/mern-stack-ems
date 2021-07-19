@@ -17,4 +17,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["npm","run", "build_and_start"]
+CMD ["npm","build"]

@@ -3,18 +3,16 @@ const mongoose = require("mongoose");
 const EmployeeRoute = require("./routes/employee");
 const path = require("path");
 const cors = require("cors");
-const expressValidator = require('express-validator');
+const dotenv = require('dotenv');
 
 
-const port = process.env.PORT || 5000;
+dotenv.config();
+const port = process.env.PORT;
 const app = express();
 
 try{
-  mongoose.connect(process.env.MONGODB_URI ||
-    // "mongodb://localhost:27017/AS_ChallengeTrial",
-  
-      "mongodb+srv://SYSADMIN:sysadmin1234@as-challenge-trial.w9eqp.mongodb.net/AS_ChallengeTrial?retryWrites=true&w=majority",
-  
+  mongoose.connect(process.env.MONGODB_URI,
+    // "mongodb://localhost:27017/AS_ChallengeTrial", 
       {
         useNewUrlParser: true,
         useCreateIndex: true,
@@ -38,13 +36,13 @@ app.use(cors());
 // app.use(expressValidator());
 app.use("/employee", EmployeeRoute);
 
-// if(process.env.NODE_ENV === 'production'){
-//   app.use(express.static("client/build"));
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static("client/build"));
 
-//   app.get("*", (req, res) =>{
-//     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-//   })
-// }
+  // app.get("*", (req, res) =>{
+  //   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  // })
+}
 // app.use(express.static("client/build"));
 
 //   app.get("*", (req, res) =>{
