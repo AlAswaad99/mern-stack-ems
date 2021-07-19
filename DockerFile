@@ -9,8 +9,8 @@ WORKDIR /usr/src/app
 # Install Dependencies
 COPY package*.json ./
 
-RUN cd server && npm install --silent
-RUN cd client && npm install --silent && npm run build
+RUN npm install --silent
+RUN npm run build_client
 
 # Copy app source code
 COPY . .
