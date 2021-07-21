@@ -80,8 +80,7 @@ export const EditEmployee =  async (employee: EmployeeModel) =>{
 }
 
 export const SearchEmployeeByName =  async (empName: string) =>{
-    try{
-        
+    try{    
         // const url = `${process.env.REACT_APP_SERVER_BASE_URL}:${process.env.REACT_APP_PORT}/${process.env.REACT_APP_EMPLOYEE_ROUTE}${empName}`;
         const url = `${process.env.REACT_APP_SERVER_BASE_URL}:${process.env.PORT}/${process.env.REACT_APP_EMPLOYEE_ROUTE}${empName}`;
         const res = await Axios.get(url);
