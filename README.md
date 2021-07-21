@@ -45,9 +45,9 @@ MERN Stack Employee Management System is a web based application tha helps emplo
 
 ## Future Features
 
-- Use Typescript for development
-- Deploying app on a free hosting platform such as Heroku
-- Making a responsive UI
+- Use Typescript for development (✅ Included)
+- Deploying app on a free hosting platform such as Heroku (✅ Included)
+- Making a responsive UI (✅ Included)
 
 ## Dependencies
 
@@ -79,7 +79,9 @@ MERN Stack Employee Management System is a web based application tha helps emplo
 - "typescript": "^4.3.4",
 - "web-vitals": "^1.0.1",
 - "cors": "^2.8.5",
+- "dotenv": "^10.0.0",
 - "express": "^4.17.1",
+- "express-validator": "^6.12.0",
 - "mongoose": "^5.12.13",
 - "nodemon": "^2.0.7",
 
