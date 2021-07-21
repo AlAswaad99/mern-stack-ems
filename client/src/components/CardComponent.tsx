@@ -80,7 +80,7 @@ const Card = (CardProps: EmployeeModel) => {
         )}
         <p className="Employee-Gender">
           {" "}
-          <strong>Genger:</strong> {CardProps.Gender}
+          <strong>Gender:</strong> {CardProps.Gender}
         </p>
         <p className="Employee-DOB">
           {" "}
