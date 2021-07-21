@@ -27,6 +27,7 @@ const Card = (CardProps: EmployeeModel) => {
 
   const selectEmployee = (emp: EmployeeModel) => {
     dispatch(selectEmployeeForEdit(emp));
+    window.scrollTo(0,0);
   };
 
   const showUndoToast = (emp: EmployeeModel) => {

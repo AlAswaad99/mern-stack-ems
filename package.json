@@ -2,13 +2,13 @@
   "name": "ems_typescript",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -p tsconfig.json",
     "build_client": "cd client && react-scripts build",
     "start_client": "cd client && npm start",
-    "start": "cd server && npm start"
+    "start": "npm start --prefix server"
   },
   "author": "",
   "license": "ISC",
