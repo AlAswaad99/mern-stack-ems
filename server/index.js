@@ -13,8 +13,8 @@ const app = express();
 
 try{
   mongoose.connect(
-    process.env.MONGODB_URI,
-    // "mongodb://localhost:27017/AS_ChallengeTrial", 
+    // process.env.MONGODB_URI,
+    "mongodb://localhost:27017/AS_ChallengeTrial", 
       {
         useNewUrlParser: true,
         useCreateIndex: true,
@@ -72,12 +72,12 @@ if(process.env.NODE_ENV === 'production'){
 
 // console.log(process.env.NODE_ENV);
 
-// if(process.env.NODE_ENV === 'dev'){
-//   app.use(express.static("../client/build"));
+if(process.env.NODE_ENV === 'dev'){
+  app.use(express.static("../client/build"));
 
-//   // app.get("*", (req, res) =>{
-//   //   res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
-//   // })
-// }
+  // app.get("*", (req, res) =>{
+  //   res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
+  // })
+}
 app.listen(port, ()=> console.log(`listening on port ${port}`));
 

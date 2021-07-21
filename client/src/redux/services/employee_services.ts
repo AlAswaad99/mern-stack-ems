@@ -1,10 +1,14 @@
 import Axios from "axios"
 import moment from "moment";
 import { EmployeeModel } from "../../model/Employee_Model";
+// import dotenv from "dotenv";
+// import env from "react-dotenv";
 
+// dotenv.config();
 export const GetDataFromAPI = async () =>{
     try{
-        const res = await Axios.get("http://localhost:5000/employee/");
+        console.log(`${process.env.REACT_APP_SERVER_BASE_URL}:${process.env.REACT_APP_PORT}/${process.env.REACT_APP_EMPLOYEE_ROUTE}`);
+        const res = await Axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}:${process.env.REACT_APP_PORT}/${process.env.REACT_APP_EMPLOYEE_ROUTE}`);
         const data = await res.data;
         if(res.status === 200){
             data.sort((a: EmployeeModel,b: EmployeeModel) => a.Firstname.toLowerCase().localeCompare(b.Firstname.toLowerCase()));
@@ -25,7 +29,7 @@ export const DeleteEmployee =  async (employee: EmployeeModel) =>{
     try{
         
 
-        const url = `http://localhost:5000/employee/delete/${employee._id}`;
+        const url = `${process.env.REACT_APP_SERVER_BASE_URL}:${process.env.REACT_APP_PORT}/${process.env.REACT_APP_EMPLOYEE_ROUTE}delete/${employee._id}`;
         const res = await Axios.delete(url);
         const data = await res.data;
 
@@ -41,7 +45,7 @@ export const DeleteEmployee =  async (employee: EmployeeModel) =>{
 
 export const AddEmployee =  async (employee: EmployeeModel) =>{
     try{
-        const url = `http://localhost:5000/employee/register`;
+        const url = `${process.env.REACT_APP_SERVER_BASE_URL}:${process.env.REACT_APP_PORT}/${process.env.REACT_APP_EMPLOYEE_ROUTE}register`;
         const res = await Axios.post(url,employee);
         const data = await res.data;
 
@@ -57,7 +61,7 @@ export const AddEmployee =  async (employee: EmployeeModel) =>{
 
 export const EditEmployee =  async (employee: EmployeeModel) =>{
     try{
-        const url = `http://localhost:5000/employee/update/${employee._id}`;
+        const url = `${process.env.REACT_APP_SERVER_BASE_URL}:${process.env.REACT_APP_PORT}/${process.env.REACT_APP_EMPLOYEE_ROUTE}update/${employee._id}`;
         const res = await Axios.put(url,employee);
         const data = await res.data;
 
@@ -74,7 +78,7 @@ export const EditEmployee =  async (employee: EmployeeModel) =>{
 export const SearchEmployeeByName =  async (empName: string) =>{
     try{
         
-        const url = `http://localhost:5000/employee/${empName}`;
+        const url = `${process.env.REACT_APP_SERVER_BASE_URL}:${process.env.REACT_APP_PORT}/${process.env.REACT_APP_EMPLOYEE_ROUTE}${empName}`;
         const res = await Axios.get(url);
         const data = await res.data;
 
