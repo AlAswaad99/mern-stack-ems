@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -p tsconfig.json",
-    "build_client": "cd client && npm run build",
+    "build_client": "react-scripts build",
     "start_client": "cd client && npm start",
     "start": "cd server && npm start"
   },
@@ -66,8 +66,5 @@
     "eslint-plugin-react": "^7.24.0",
     "nodemon": "^2.0.7",
     "prettier": "^2.3.1"
-  },
-  "react-dotenv": {
-    "whitelist": ["REACT_APP_SERVER_BASE_URL"]
   }
 }

@@ -9,8 +9,8 @@ export function validateGender(gender: string) {
 }
 
 export const Error = ({ errors }: any) => {
-  console.log("this is errors from component");
-  console.log(errors);
+  // console.log("this is errors from component");
+  // console.log(errors);
   return errors !== undefined ? (
     <Tippy content={errors.message}>
       <div className="Error-Info-Icon">
