@@ -24,7 +24,7 @@ export function editEmployee(employee: EmployeeModel) {
 }
 
 export function removeEmployee(employee: EmployeeModel) {
-  console.log(employee);
+  // console.log(employee);
   return {
     type: type.DELETE_EMPLOYEE_REQUEST,
     payload: employee,
@@ -32,7 +32,7 @@ export function removeEmployee(employee: EmployeeModel) {
 }
 
 export function searchEmployeeByName(Firstname: string) {
-  console.log(Firstname);
+  // console.log(Firstname);
 
   return {
     type: type.SEARCH_EMPLOYEE_REQUEST,
@@ -41,7 +41,7 @@ export function searchEmployeeByName(Firstname: string) {
 }
 
 export function selectEmployeeForEdit(employee: EmployeeModel) {
-  console.log(employee);
+  // console.log(employee);
   return {
     type: type.EMPLOYEE_SELECTED_FOR_EDIT,
     payload: employee,

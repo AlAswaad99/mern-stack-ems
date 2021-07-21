@@ -43,9 +43,9 @@ const AddEmployeeForm = () => {
 
   useEffect(() => {
     if (selectedEmployee !== null) {
-      console.log("this is he useeffect selected employee");
-      console.log(selectedEmployee);
-      console.log(selectedEmployee.DOB);
+      // console.log("this is he useeffect selected employee");
+      // console.log(selectedEmployee);
+      // console.log(selectedEmployee.DOB);
       reset(selectedEmployee);
     } 
   }, [selectedEmployee]);

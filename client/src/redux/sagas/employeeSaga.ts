@@ -41,8 +41,8 @@ function* fetchEmployees(): any {
     } as ActionModel);
   } catch (_e) {
     const e: Error = _e;
-    console.log(e.message);
-    console.log("this is not");
+    // console.log(e.message);
+    // console.log("this is not");
     yield put({ type: FETCH_EMPLOYEES_FAILED, message: e.message });
   }
 }
@@ -51,8 +51,8 @@ function* addEmployee(action: ActionModel): any {
   try {
     const message = yield call(AddEmployee, action.payload);
     // console.log(action.empName)
-    console.log(action.payload);
-    console.log("coming here at generator of addition");
+    // console.log(action.payload);
+    // console.log("coming here at generator of addition");
     // console.log(message);
     yield put({ type: ADD_EMPLOYEE_SUCCESSFUL, message: message });
 
@@ -63,8 +63,8 @@ function* addEmployee(action: ActionModel): any {
     } as ActionModel);
   } catch (_e) {
     const e: Error = _e;
-    console.log(e.message);
-    console.log("this is not");
+    // console.log(e.message);
+    // console.log("this is not");
     yield put({ type: ADD_EMPLOYEE_FAILED, message: e.message });
   }
 }
@@ -73,8 +73,8 @@ function* editEmployee(action: ActionModel): any {
   try {
     const message = yield call(EditEmployee, action.payload);
     // console.log(action.empName)
-    console.log(action.payload);
-    console.log("coming here at generator of editing");
+    // console.log(action.payload);
+    // console.log("coming here at generator of editing");
     // console.log(message);
     yield put({ type: EDIT_EMPLOYEE_SUCCESSFUL, message: message });
 
@@ -85,8 +85,8 @@ function* editEmployee(action: ActionModel): any {
     } as ActionModel);
   } catch (_e) {
     const e: Error = _e;
-    console.log(e.message);
-    console.log("this is not");
+    // console.log(e.message);
+    // console.log("this is not");
     yield put({ type: EDIT_EMPLOYEE_FAILED, message: e.message });
   }
 }
@@ -95,8 +95,8 @@ function* deleteEmployee(action: ActionModel): any {
   try {
     const message = yield call(DeleteEmployee, action.payload);
     // console.log(action.empName)
-    console.log(action.payload);
-    console.log("coming here at generator of deletion");
+    // console.log(action.payload);
+    // console.log("coming here at generator of deletion");
     // console.log(message);
     yield put({ type: DELETE_EMPLOYEE_SUCCESSFUL, message: message });
 
@@ -106,7 +106,7 @@ function* deleteEmployee(action: ActionModel): any {
       payload: employees,
     } as ActionModel);
   } catch (e) {
-    console.log("this is not");
+    // console.log("this is not");
 
     yield put({ type: DELETE_EMPLOYEE_FAILED, message: e.message });
   }
@@ -116,8 +116,8 @@ function* searchEmployeeByName(action: ActionModel): any {
   try {
     const employees = yield call(SearchEmployeeByName, action.payload);
     // console.log(action.empName)
-    console.log(action.payload);
-    console.log("coming here at generator of getting by name");
+    // console.log(action.payload);
+    // console.log("coming here at generator of getting by name");
     // console.log(message);
     yield put({
       type: SEARCH_EMPLOYEE_SUCCESSFUL,
@@ -127,7 +127,7 @@ function* searchEmployeeByName(action: ActionModel): any {
     // const employees = yield call(GetDataFromAPI);
     // yield put({type: FETCH_EMPLOYEES_SUCCESSFUL, employees: employees});
   } catch (e) {
-    console.log("this is not");
+    // console.log("this is not");
 
     yield put({ type: SEARCH_EMPLOYEE_FAILED, message: e.message });
   }
@@ -136,8 +136,8 @@ function* searchEmployeeByName(action: ActionModel): any {
 function* selectEmployee(action: ActionModel): any {
   const employee = yield call(EmployeeSelected, action.payload);
   // console.log(action.empName)
-  console.log(action.payload);
-  console.log("coming here at generator of selecting employee");
+  // console.log(action.payload);
+  // console.log("coming here at generator of selecting employee");
   // console.log(message);
   yield put({
     type: EMPLOYEE_SELECTED_FOR_EDIT,
@@ -152,7 +152,7 @@ function* deselectEmployee(): any {
     const employee = yield call(EmployeeDeselected);
     // console.log(action.empName)
     // console.log(action.payload);
-    console.log("coming here at generator of deselecting employee");
+    // console.log("coming here at generator of deselecting employee");
     // console.log(message);
     yield put({
       type: EMPLOYEE_SELECTION_CLEARED,

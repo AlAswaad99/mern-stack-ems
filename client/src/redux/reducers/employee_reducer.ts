@@ -22,8 +22,8 @@ export const employee_reducer =  (
         loading: true,
       } ;
     case type.FETCH_EMPLOYEES_SUCCESSFUL:
-      console.log("this is payload from reducer");
-      console.log(action.payload);
+      // console.log("this is payload from reducer");
+      // console.log(action.payload);
       return {
         ...state,
         loading: false,

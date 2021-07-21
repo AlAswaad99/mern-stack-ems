@@ -39,8 +39,8 @@ const Employee = () => {
     (state) => state.employee_state.error
   );
 
-  console.log("this is the employees from emp comp");
-  console.log(employees);
+  // console.log("this is the employees from emp comp");
+  // console.log(employees);
   useEffect(() => {
     if (searchText === "") {
       dispatch(fetchEmployees());

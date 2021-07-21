@@ -7,9 +7,9 @@ import { EmployeeModel } from "../../model/Employee_Model";
 // dotenv.config();
 export const GetDataFromAPI = async () =>{
     try{
-        console.log(`/employee/`);
-        console.log(`${process.env.NODE_ENV}`);        
-        console.log(`${process.env.PORT}`);        
+        // console.log(`/employee/`);
+        // console.log(`${process.env.NODE_ENV}`);        
+        // console.log(`${process.env.PORT}`);        
         // const res = await Axios.get(`/employee/`);
         const res = await Axios.get(`/employee/`);
         const data = await res.data;
