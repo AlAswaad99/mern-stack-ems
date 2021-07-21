@@ -13,8 +13,8 @@ const app = express();
 
 try{
   mongoose.connect(
-    // process.env.MONGODB_URI,
-    "mongodb://localhost:27017/AS_ChallengeTrial", 
+    process.env.MONGODB_URI,
+    // "mongodb://localhost:27017/AS_ChallengeTrial", 
       {
         useNewUrlParser: true,
         useCreateIndex: true,
