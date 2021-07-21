@@ -38,46 +38,44 @@ app.use(cors());
 // app.use(expressValidator());
 app.use("/employee", EmployeeRoute);
 
-console.log(process.env.NODE_ENV);
-console.log(__dirname);
+// console.log(process.env.NODE_ENV);
+// console.log(__dirname);
 
-console.log(`${__dirname}/client/build`);
-fs.access(`${__dirname}/client/build`, (error) => {
-  if(error){
-    console.log("nope");
-  }
-  else{
-    console.log("yup");
-  }
-});
+// console.log(`${__dirname}/client/build`);
+// fs.access(`${__dirname}/client/build`, (error) => {
+//   if(error){
+//     console.log("nope");
+//   }
+//   else{
+//     console.log("yup");
+//   }
+// });
 
-console.log(`${__dirname}/client/build/`);
-fs.access(`${__dirname}/client/build`, (error) => {
-  if(error){
-    console.log("nope");
-  }
-  else{
-    console.log("yup");
-  }
-});
+// console.log(`${__dirname}/client/build/`);
+// fs.access(`${__dirname}/client/build`, (error) => {
+//   if(error){
+//     console.log("nope");
+//   }
+//   else{
+//     console.log("yup");
+//   }
+// });
 
 
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static("../client/build"));
 
-  // app.get("*", (req, res) =>{
-  //   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  // })
+  
 }
 
 // console.log(process.env.NODE_ENV);
 
-if(process.env.NODE_ENV === 'dev'){
-  app.use(express.static("../client/build"));
+// if(process.env.NODE_ENV === 'dev'){
+//   app.use(express.static("../client/build"));
 
-  // app.get("*", (req, res) =>{
-  //   res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
-  // })
-}
+//   // app.get("*", (req, res) =>{
+//   //   res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
+//   // })
+// }
 app.listen(port, ()=> console.log(`listening on port ${port}`));
 
